@@ -10,14 +10,21 @@ namespace beginCSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Gebe einen Zahl ein");
-            int number = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Wähle den Buchstaben, nach dem gesucht werden soll");
+            string buchstabe = Console.ReadLine();
+            string namen = ("Jan, Philipp, Erwin, Leon, Robert, Jonas, Marie, Lukas, Mona, Andreas, Marcello, Robin, Hannes");
+            string[] liste = namen.Split(',');
 
-            for (int i = number; i >= 1; i-=1)
+            for(int i = 0; i < liste.Length; i++)
             {
-                Console.WriteLine(i-1);
-                
+                if (liste[i].Contains(buchstabe))
+                {
+                    Console.Write(liste[i]);
+                    i++;
+                }
             }
+
+
 
             Console.ReadLine();
         }
