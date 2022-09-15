@@ -10,10 +10,10 @@ namespace beginCSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Schreibe einen Text");
+            Console.WriteLine("Schreibe einen Text mit Leerzeichen am Anfang und am Ende");
             string entry = Console.ReadLine();
 
-            Console.WriteLine(entry.PadLeft(30, 'y'));
+            Console.WriteLine(entry.Trim());
 
             Console.ReadLine();
             
