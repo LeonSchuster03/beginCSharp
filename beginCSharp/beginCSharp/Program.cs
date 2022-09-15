@@ -10,17 +10,16 @@ namespace beginCSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Gebe verschiedene Wörter mit einem ';' getrennt ein");
-            string entry = Console.ReadLine();
+            Console.WriteLine("Gebe einen Text ein");
+            string txt = Console.ReadLine();
 
-            string []splitted_entry = entry.Split(';') ;
-
-            int length = splitted_entry.Length;
-            int i = 0;
-
-            for (i = 0; i < length; i++)
+            if (txt.Contains("abc"))
             {
-                Console.WriteLine(splitted_entry[i]);
+                Console.WriteLine("TRUE");
+            }
+            else
+            {
+                Console.WriteLine("FALSE");
             }
             
             Console.ReadLine();
