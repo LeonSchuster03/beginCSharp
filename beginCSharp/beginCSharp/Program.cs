@@ -13,17 +13,10 @@ namespace beginCSharp
             Console.WriteLine("Gebe einen Text ein");
             string txt = Console.ReadLine();
 
-            if (txt.Contains("abc"))
-            {
-                Console.WriteLine("TRUE");
-            }
-            else
-            {
-                Console.WriteLine("FALSE");
-            }
-            
+            Console.WriteLine(txt.ToLower());
+            Console.WriteLine(txt.ToUpper());
+
             Console.ReadLine();
-            
         }
     }
 }
