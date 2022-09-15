@@ -13,7 +13,7 @@ namespace beginCSharp
             Console.WriteLine("Schreibe einen Text");
             string entry = Console.ReadLine();
 
-                       Console.WriteLine(entry.PadRight(20, 'y'));
+            Console.WriteLine(entry.PadLeft(30, 'y'));
 
             Console.ReadLine();
             
