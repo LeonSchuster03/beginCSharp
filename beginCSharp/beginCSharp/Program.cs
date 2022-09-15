@@ -10,11 +10,19 @@ namespace beginCSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Gebe einen Text ein");
-            string txt = Console.ReadLine();
+            Console.WriteLine("Gebe einen Zahl ein");
+            int number = Convert.ToInt32(Console.ReadLine());
+            int a = 0;
+            int b = 0;
 
-            Console.WriteLine(txt.ToLower());
-            Console.WriteLine(txt.ToUpper());
+            for (int i = 0; i <= number; i++)
+            {
+                
+                
+                b = a + i;
+                Console.WriteLine(b);
+                a = b;
+            }
 
             Console.ReadLine();
         }
