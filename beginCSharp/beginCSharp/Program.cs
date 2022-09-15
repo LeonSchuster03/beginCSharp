@@ -10,17 +10,15 @@ namespace beginCSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Wähle eine Zahl");
-            int zahl1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Schreibe einen Text");
+            string entry = Console.ReadLine();
+            string replaced_entry = entry.Replace("U", "G").Replace("u", "g");
 
-            Console.WriteLine("Wähle eine zweite Zahl");
-            int zahl2 = Convert.ToInt32(Console.ReadLine());
-
-            int summe = zahl1 + zahl2;
-
-            Console.WriteLine("Die Summe der Zahlen ist " + summe);
+            Console.WriteLine("Der alte Text war: " + entry);
+            Console.WriteLine("Der neue Text ist: " + replaced_entry);
 
             Console.ReadLine();
+            
         }
     }
 }
