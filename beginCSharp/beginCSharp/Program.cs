@@ -12,10 +12,9 @@ namespace beginCSharp
         {
             Console.WriteLine("Schreibe einen Text");
             string entry = Console.ReadLine();
-            string replaced_entry = entry.Replace("U", "G").Replace("u", "g");
+            int length = Convert.ToInt32(entry.Length);
 
-            Console.WriteLine("Der alte Text war: " + entry);
-            Console.WriteLine("Der neue Text ist: " + replaced_entry);
+            Console.WriteLine("Die Länge des eingegebenen Textes ist " + length);
 
             Console.ReadLine();
             
