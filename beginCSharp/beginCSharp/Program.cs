@@ -12,16 +12,11 @@ namespace beginCSharp
         {
             Console.WriteLine("Gebe einen Zahl ein");
             int number = Convert.ToInt32(Console.ReadLine());
-            int a = 0;
-            int b = 0;
 
-            for (int i = 0; i <= number; i++)
+            for (int i = number; i >= 1; i-=1)
             {
+                Console.WriteLine(i-1);
                 
-                
-                b = a + i;
-                Console.WriteLine(b);
-                a = b;
             }
 
             Console.ReadLine();
