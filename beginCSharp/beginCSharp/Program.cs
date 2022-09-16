@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace beginCSharp
 {
@@ -11,28 +12,52 @@ namespace beginCSharp
     {
         static void Main(string[] args)
         {
-            for(int i = 1; i <= 100; i++)
-            {
-                int zahl = i;
-                if ((zahl % 3 == 0) && !(zahl % 5 == 0))
-                {
-                    Console.WriteLine("Fizz");
-                }
+            Console.WriteLine("Wie lang soll der Array sein?");
+            int[] numbers = new int[Convert.ToInt32(Console.ReadLine())];
 
-                else if ((zahl % 5 == 0) && !(zahl % 5 == 0))
-                {
-                    Console.WriteLine("Buzz");
-                }
-                else if ((zahl % 3 == 0) && (zahl % 5 == 0))
-                {
-                    Console.WriteLine("FizzBuzz");
-                }
-                else
-                {
-                    Console.WriteLine(zahl);
-                }
-            
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.WriteLine("Welche Zahl soll dem Array hinzugefügt werden?");
+                numbers[i] = Convert.ToInt32(Console.ReadLine());
             }
+
+            // Suche größte Zahl
+            int max = 0;
+            foreach(int i in numbers)
+            {
+                if (i > max)
+                {
+                    max = i;
+                }
+                
+            }
+
+            //Suche kleinste Zahl
+            int min = 999999999;
+            foreach(int e in numbers)
+            {
+                if(e < min)
+                {
+                    min = e;
+                }
+            }
+
+            //Durchschnitt berechnen
+            float summe = 0;
+            foreach(int a in numbers)
+            {
+                summe = summe + a;
+            }
+
+
+            //Zahlen ausgeben
+
+            Console.WriteLine($"Die größte Zahl ist {max}");
+            Console.WriteLine($"Die kleinste Zahl ist {min}");
+            Console.WriteLine($"Der Durchschnitt ist {summe / numbers.Length}");
+
+
+
 
             Console.ReadLine();
         }
