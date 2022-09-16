@@ -13,29 +13,15 @@ namespace beginCSharp
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Wir holen uns jetzt eine Zahl aus Number()");
+            int zahl = Number();
+            Console.WriteLine(zahl);
+            Console.ReadLine();
+        }
 
-            List<string> names = new List<string>();
-            string repeat = "y";
-            int i = 1;
-
-            do
-            {
-                Console.WriteLine($"Gebe den {i}. Namen ein, den du hinzufügen willst");
-                i++;
-                names.Add(Console.ReadLine());
-                Console.WriteLine("Willst du einen weiteren Namen einfügen ( y / n )?");
-                repeat = Console.ReadLine();
-            } while (repeat == "y");
-
-            Console.WriteLine(" ");
-            Console.WriteLine("Die Liste lautet:");
-
-            foreach(string name in names)
-            {
-                Console.WriteLine(name);
-            }
-
-            Console.ReadKey();
+        static int Number()
+        {
+            return 15;
         }
     }
 }
