@@ -13,127 +13,89 @@ namespace beginCSharp
     {
         static void Main(string[] args)
         {
-            //Aufgabe 2
-            List<int> numbers = new List<int>() { 5, 3, 7};
 
-            //Aufgabe 3
-            var repeat = true;
+            //Roulette
+            var game = true;
+
+            //Guthaben und Einsatz
+            int guthaben = 10000;
+            int einsatz = 10;
+            Random k = new Random();
+
             do
             {
-                Console.WriteLine("Bitte gib eine Zahl ein ");
-                numbers.Add(Convert.ToInt16(Console.ReadLine()));
-                Console.WriteLine("Willst du noch eine Zahl eingeben? (y/n)");
-                var userInput = Console.ReadLine();
-                if (userInput == "n")
+                //Random Nummer erzeugen
+                int ranNum = k.Next(0, 36);
+                Console.WriteLine($"Dein Guthaben beträgt {guthaben}$");
+                Console.WriteLine("Wie viel möchtest du Wetten? (min 10$, max 1000$)");
+                einsatz = Convert.ToInt32(Console.ReadLine());
+                if(einsatz > 1000)
                 {
-                    repeat = false;
+                    einsatz = 1000;
                 }
-            } while (repeat);
-
-            //Aufgabe 4           
-            printList(numbers);
-
-            Console.ReadKey();
-            
-            //Aufgabe 5
-            numbers.Insert(2, 99);
-            foreach(var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
-
-            //Aufgabe 6
-            numbers.AddRange(new int[]
-            {
-                91,
-                92,
-                93,
-            });
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
-            Console.WriteLine(" ");
-
-            //Aufgabe 7
-            numbers.RemoveAt(1);
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
-            Console.WriteLine(" ");
-
-            //Aufgabe 8
-            numbers.Remove(99);
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
-            Console.WriteLine(" ");
-
-            //Aufgabe 9
-            numbers.RemoveAt(numbers.Count - 1);
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
-            Console.WriteLine(" ");
-
-            //Aufgabe 10
-            numbers.Sort();                 //sortieren und ausgeben
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
-            Console.WriteLine(" ");
-
-
-            numbers.Reverse();              //reversen und ausgeben
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
-            Console.WriteLine(" ");
-
-
-
-            //Aufgabe 11
-            foreach (var number in numbers)
-            {
-                if(number > 80)
+                if(einsatz < 10)
                 {
-                    numbers.Remove(number);
+                    einsatz = 10;
                 }
-            }
+                if(einsatz > guthaben)
+                {
+                    einsatz = guthaben;
+                }
+                Console.WriteLine($"Möchtest du {einsatz}$ auf gerade oder ungerade setzen?");
+                string wette = Console.ReadLine();
 
+
+                //Check gerade oder ungerade
+                string ausgang = "gerade";
+                if ((ranNum % 2 == 0) && (ranNum != 0))
+                {
+                    ausgang = "gerade";
+                }
+
+                if ((ranNum % 2 != 0) && (ranNum != 0))
+                {
+                    ausgang = "ungerade";
+                }
+                if (ranNum == 0)
+                {
+                    ausgang = "null";
+                }
+
+                //Vergleich Wette und Ausgang
+                if (ausgang == wette)
+                {
+                    guthaben = guthaben + einsatz;
+                    Console.WriteLine($"Du hast {einsatz}$ gewonnen; Dein neues Guthaben beträgt {guthaben}$");
+                }
+
+                if (ausgang != wette)
+                {
+                    guthaben = guthaben - einsatz;
+                    Console.WriteLine($"Du hast deinen Einsatz ({einsatz})$ verloren; Dein neues Guthaben beträgt {guthaben}$");
+                }
+
+                if (ausgang == "null")
+                {
+                    Console.WriteLine($"Es wurde eine Null, deshalb erhältst du deinen Einsatz zurück");
+                }
+
+                //Nochmal spielen?
+                Console.WriteLine("Möchtest du nochmal spielen? (y/n)");
+
+                if(Console.ReadLine() == "n")
+                {
+                    game = false;
+                }
+
+                if(guthaben <= 0)
+                {
+                    Console.WriteLine("Du hast kein Guhaben mehr, deshalb wird das Spiel beendet!");
+                    game = false;
+                }
+
+            } while (game == true);
+        }
             
-
-
-        }
-
-        //Methoden Aufgabe 1
-
-        static void printList(List<int> List)
-        {
-            foreach (var i in List)
-            {
-                Console.WriteLine(i);
-            }
-            Console.WriteLine("_________________");
-        }
-
-
-
-
-        static double Div(double z1, double z2)
-        {
-            double quotient = z1 / z2;
-            return quotient;
-        }
-            //static  Rückgabetyp  MethodenName  (Parameter)
-
-
-        
         
     }
 }
