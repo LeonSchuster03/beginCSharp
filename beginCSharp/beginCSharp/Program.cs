@@ -11,35 +11,24 @@ namespace beginCSharp
     {
         static void Main(string[] args)
         {
-            Random r = new Random();
-            int random_number = r.Next(1, 100);
-            var game = true;
-            int tries = 0;
-            Console.WriteLine("Wähle eine Zahl zwischen 1 und 100");
+            Console.WriteLine("Wie lang soll der Array sein?");
+            int[] array = new int[Convert.ToInt32(Console.ReadLine())];
 
-            while (game == true) 
+            for(int i = 0; i < array.Length; i++)
             {
-                int guess = Convert.ToInt32(Console.ReadLine());
-                if (guess == random_number)
-                {
-                    Console.WriteLine($"Du hast gewonnen, du hast {tries} versuche gebraucht");
-                    game = false;
-                }
-                else if (guess > random_number)
-                {
-                    Console.WriteLine("Die Zahl ist zu groß");
-                    tries++;
-                }
-                else if (guess < random_number)
-                {
-                    Console.WriteLine("Die Zahl ist zu klein");
-                    tries++;
-                }
-
+                Console.WriteLine("Welche Zahl soll dem Array hinzugefügt werden?");
+                array[i] = Convert.ToInt32(Console.ReadLine());
             }
+
+
+            foreach(int number in array)
+            {
+                Console.WriteLine(number);
+            }
+            
+            // namen2[i] += " 123"
 
             Console.ReadLine();
-        
-            }
+        }
     }
 }
