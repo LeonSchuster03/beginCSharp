@@ -14,11 +14,12 @@ namespace beginCSharp
         {
             Console.WriteLine("Wähle eine Zahl");
             double zahl1 = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Wähle einen Operator ( + , - , * , / , % ");
+            string zeichen = Console.ReadLine();
             Console.WriteLine("Wähle eine zweite Zahl");
             double zahl2 = Convert.ToDouble(Console.ReadLine());
             double ergebnis = 0;
-            Console.WriteLine("Wähle einen Operator ( + , - , * , / , % ");
-            string zeichen = Console.ReadLine();
+
             switch (zeichen)
             {
                 case "+":
@@ -34,10 +35,21 @@ namespace beginCSharp
                     Console.WriteLine($"{zahl1} * {zahl2} = {ergebnis}");
                     break;
                 case "/":
+                    if(zahl2 == 0)
+                    {
+                        Console.WriteLine("EY, nicht durch 0 teilen!");
+                        break;
+                    }
                     ergebnis = zahl1 / zahl2;
                     Console.WriteLine($"{zahl1} / {zahl2} = {ergebnis}");
                     break;
                 case "%":
+                    if(zahl2 == 0)
+                    {
+                        Console.WriteLine("EY, nicht durch 0 teilen!");
+                        break;
+                    }
+                    Console.WriteLine("EY, nicht durch 0 teilen");
                     ergebnis = zahl1 % zahl2;
                     Console.WriteLine($"{zahl1} % {zahl2} = {ergebnis}");
                     break;
