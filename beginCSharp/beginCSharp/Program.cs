@@ -11,21 +11,28 @@ namespace beginCSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Wie lang soll der Array sein?");
-            int[] array = new int[Convert.ToInt32(Console.ReadLine())];
-
-            for(int i = 0; i < array.Length; i++)
+            for(int i = 1; i <= 100; i++)
             {
-                Console.WriteLine("Welche Zahl soll dem Array hinzugefügt werden?");
-                array[i] = Convert.ToInt32(Console.ReadLine());
-            }
+                int zahl = i;
+                if ((zahl % 3 == 0) && !(zahl % 5 == 0))
+                {
+                    Console.WriteLine("Fizz");
+                }
 
-
-            Console.WriteLine($"Die größte Zahl ist {array.Max()}");
-            Console.WriteLine($"Die kleinste Zahl ist {array.Min()}");
-            Console.WriteLine($"Der Durchschnitt ist {array.Average()}");
+                else if ((zahl % 5 == 0) && !(zahl % 5 == 0))
+                {
+                    Console.WriteLine("Buzz");
+                }
+                else if ((zahl % 3 == 0) && (zahl % 5 == 0))
+                {
+                    Console.WriteLine("FizzBuzz");
+                }
+                else
+                {
+                    Console.WriteLine(zahl);
+                }
             
-            // namen2[i] += " 123"
+            }
 
             Console.ReadLine();
         }
