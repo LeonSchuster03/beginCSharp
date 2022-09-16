@@ -21,10 +21,9 @@ namespace beginCSharp
             }
 
 
-            foreach(int number in array)
-            {
-                Console.WriteLine(number);
-            }
+            Console.WriteLine($"Die größte Zahl ist {array.Max()}");
+            Console.WriteLine($"Die kleinste Zahl ist {array.Min()}");
+            Console.WriteLine($"Der Durchschnitt ist {array.Average()}");
             
             // namen2[i] += " 123"
 
