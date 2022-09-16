@@ -12,52 +12,35 @@ namespace beginCSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Wie lang soll der Array sein?");
-            int[] numbers = new int[Convert.ToInt32(Console.ReadLine())];
-
-            for (int i = 0; i < numbers.Length; i++)
+            Console.WriteLine("Wähle eine Zahl");
+            double zahl1 = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Wähle eine zweite Zahl");
+            double zahl2 = Convert.ToDouble(Console.ReadLine());
+            double ergebnis = 0;
+            Console.WriteLine("Wähle einen Operator ( + , - , * , / ");
+            string zeichen = Console.ReadLine();
+            switch (zeichen)
             {
-                Console.WriteLine("Welche Zahl soll dem Array hinzugefügt werden?");
-                numbers[i] = Convert.ToInt32(Console.ReadLine());
+                case "+":
+                    ergebnis = zahl1 + zahl2;
+                    Console.WriteLine($"{zahl1} + {zahl2} = {ergebnis}");
+                    break;
+                case "-":
+                    ergebnis = zahl1 - zahl2;
+                    Console.WriteLine($"{zahl1} - {zahl2} = {ergebnis}");
+                    break;
+                case "*":
+                    ergebnis = zahl1 * zahl2;
+                    Console.WriteLine($"{zahl1} * {zahl2} = {ergebnis}");
+                    break;
+                case "/":
+                    ergebnis = zahl1 / zahl2;
+                    Console.WriteLine($"{zahl1} / {zahl2} = {ergebnis}");
+                    break;
+                default:
+                    Console.WriteLine("Bitte versuche es erneut und wähle einen richtigen Operator aus");
+                    break;
             }
-
-            // Suche größte Zahl
-            int max = 0;
-            foreach(int i in numbers)
-            {
-                if (i > max)
-                {
-                    max = i;
-                }
-                
-            }
-
-            //Suche kleinste Zahl
-            int min = 999999999;
-            foreach(int e in numbers)
-            {
-                if(e < min)
-                {
-                    min = e;
-                }
-            }
-
-            //Durchschnitt berechnen
-            float summe = 0;
-            foreach(int a in numbers)
-            {
-                summe = summe + a;
-            }
-
-
-            //Zahlen ausgeben
-
-            Console.WriteLine($"Die größte Zahl ist {max}");
-            Console.WriteLine($"Die kleinste Zahl ist {min}");
-            Console.WriteLine($"Der Durchschnitt ist {summe / numbers.Length}");
-
-
-
 
             Console.ReadLine();
         }
