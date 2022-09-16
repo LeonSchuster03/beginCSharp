@@ -20,29 +20,55 @@ namespace beginCSharp
             //Guthaben und Einsatz
             int guthaben = 10000;
             int einsatz = 10;
+            string wette;
             Random k = new Random();
-
+            bool autoplay = false;
             do
             {
+                
                 //Random Nummer erzeugen
                 int ranNum = k.Next(0, 36);
                 Console.WriteLine($"Dein Guthaben beträgt {guthaben}$");
-                Console.WriteLine("Wie viel möchtest du Wetten? (min 10$, max 1000$)");
-                einsatz = Convert.ToInt32(Console.ReadLine());
-                if(einsatz > 1000)
+
+                if (autoplay == false)
                 {
-                    einsatz = 1000;
+                    Console.WriteLine("Soll der Computer übernehmen (y/n)?");
+                    if (Console.ReadLine() == "y")
+                    {
+                        autoplay = true;
+                    }
                 }
-                if(einsatz < 10)
+
+                if (autoplay == false)
                 {
-                    einsatz = 10;
+                    Console.WriteLine("Wie viel möchtest du Wetten? (min 10$, max 1000$)");
+                    einsatz = Convert.ToInt32(Console.ReadLine());
+
+                    if (einsatz > 1000)
+                    {
+                        einsatz = 1000;
+                    }
+                    if (einsatz < 10)
+                    {
+                        einsatz = 10;
+                    }
+                    if (einsatz > guthaben)
+                    {
+                        einsatz = guthaben;
+                    }
+
+                    Console.WriteLine($"Möchtest du {einsatz}$ auf gerade oder ungerade setzen?");
+                    wette = Console.ReadLine();
+
                 }
-                if(einsatz > guthaben)
-                {
-                    einsatz = guthaben;
-                }
-                Console.WriteLine($"Möchtest du {einsatz}$ auf gerade oder ungerade setzen?");
-                string wette = Console.ReadLine();
+
+
+
+                
+                
+                
+                
+                
 
 
                 //Check gerade oder ungerade
@@ -68,7 +94,7 @@ namespace beginCSharp
                     Console.WriteLine($"Du hast {einsatz}$ gewonnen; Dein neues Guthaben beträgt {guthaben}$");
                 }
 
-                if (ausgang != wette)
+                if ((ausgang != wette) && (ausgang !="null"))
                 {
                     guthaben = guthaben - einsatz;
                     Console.WriteLine($"Du hast deinen Einsatz ({einsatz})$ verloren; Dein neues Guthaben beträgt {guthaben}$");
@@ -82,12 +108,12 @@ namespace beginCSharp
                 //Nochmal spielen?
                 Console.WriteLine("Möchtest du nochmal spielen? (y/n)");
 
-                if(Console.ReadLine() == "n")
+                if (Console.ReadLine() == "n")
                 {
                     game = false;
                 }
 
-                if(guthaben <= 0)
+                if (guthaben <= 0)
                 {
                     Console.WriteLine("Du hast kein Guhaben mehr, deshalb wird das Spiel beendet!");
                     game = false;
@@ -95,7 +121,7 @@ namespace beginCSharp
 
             } while (game == true);
         }
-            
-        
+
+        static 
     }
 }
