@@ -20,18 +20,22 @@ namespace beginCSharp
             //Guthaben und Einsatz
             int guthaben = 10000;
             int einsatz = 10;
-            string wette;
+            string wette = "gerade";
             Random k = new Random();
             bool autoplay = false;
+            int lastbet = 0;
+            bool lastgame = true;
+            int gamecount = 0;
             do
             {
                 
                 //Random Nummer erzeugen
-                int ranNum = k.Next(0, 36);
-                Console.WriteLine($"Dein Guthaben beträgt {guthaben}$");
+                int ranNum = k.Next(0, 37);
+                
 
                 if (autoplay == false)
                 {
+                    Console.WriteLine($"Dein Guthaben beträgt {guthaben}$");
                     Console.WriteLine("Soll der Computer übernehmen (y/n)?");
                     if (Console.ReadLine() == "y")
                     {
@@ -44,7 +48,7 @@ namespace beginCSharp
                     Console.WriteLine("Wie viel möchtest du Wetten? (min 10$, max 1000$)");
                     einsatz = Convert.ToInt32(Console.ReadLine());
 
-                    if (einsatz > 1000)
+                    if (einsatz > 1000)             //Als Methode bauen
                     {
                         einsatz = 1000;
                     }
@@ -62,14 +66,12 @@ namespace beginCSharp
 
                 }
 
-
-
-                
-                
-                
-                
-                
-
+                if(autoplay == true)
+                {
+                    einsatz = computerPlaceBet(guthaben, lastgame, lastbet);
+                    wette = computerSelectField(k);
+                }
+                guthaben = guthaben - einsatz;
 
                 //Check gerade oder ungerade
                 string ausgang = "gerade";
@@ -90,38 +92,81 @@ namespace beginCSharp
                 //Vergleich Wette und Ausgang
                 if (ausgang == wette)
                 {
-                    guthaben = guthaben + einsatz;
-                    Console.WriteLine($"Du hast {einsatz}$ gewonnen; Dein neues Guthaben beträgt {guthaben}$");
+                    guthaben = guthaben + (einsatz * 2);
+                    Console.WriteLine($"Du hast {einsatz*2}$ gewonnen; Dein neues Guthaben beträgt {guthaben}$");
+                    lastgame = true;
                 }
 
                 if ((ausgang != wette) && (ausgang !="null"))
                 {
-                    guthaben = guthaben - einsatz;
                     Console.WriteLine($"Du hast deinen Einsatz ({einsatz})$ verloren; Dein neues Guthaben beträgt {guthaben}$");
+                    lastgame = false;
                 }
 
                 if (ausgang == "null")
                 {
-                    Console.WriteLine($"Es wurde eine Null, deshalb erhältst du deinen Einsatz zurück");
+                    Console.WriteLine($"Es wurde eine Null");
+                    einsatz = einsatz / 2;
                 }
-
+                lastbet = einsatz;
                 //Nochmal spielen?
-                Console.WriteLine("Möchtest du nochmal spielen? (y/n)");
 
-                if (Console.ReadLine() == "n")
+                if (autoplay == false)
                 {
-                    game = false;
+                    Console.WriteLine("Möchtest du nochmal spielen? (y/n)");
+                    if (Console.ReadLine() == "n")
+                    {
+                        game = false;
+                    }
                 }
-
                 if (guthaben <= 0)
                 {
-                    Console.WriteLine("Du hast kein Guhaben mehr, deshalb wird das Spiel beendet!");
+                    Console.WriteLine("Du hast kein Guthaben mehr, deshalb wird das Spiel beendet!");
                     game = false;
                 }
-
+                gamecount ++;
             } while (game == true);
+            Console.WriteLine($"Es wurden {gamecount} Runden gespielt!");
+            Console.ReadLine();
         }
 
-        static 
+        static int computerPlaceBet(int guthaben, bool lastgame, int lastbet)
+        {
+            int calcBet;
+            if (guthaben >= 10000)
+            {
+                if (lastgame == true)
+                {
+                    calcBet = 10;
+                }
+                else
+                {
+                    calcBet = lastbet * 2;
+                }
+            }
+            else
+            {
+                calcBet = (10000 - guthaben) * 2;
+                
+            }
+
+            if (calcBet > 1000)
+            {
+                calcBet = 1000;
+            }
+            if (calcBet > guthaben)
+            {
+                calcBet = guthaben;
+            }
+           
+            return calcBet;
+        }
+        static string computerSelectField(Random k)
+        {
+            if (k.Next(1, 2) == 2)
+            { return "gerade"; }
+            else
+            { return "ungerade"; }
+        }
     }
 }
